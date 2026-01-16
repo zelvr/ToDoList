@@ -1,0 +1,12 @@
+services:
+  todolist:
+    image: ${DOCKER_REGISTRY-}todolist
+    build:
+      context: .
+      dockerfile: ToDoList/Dockerfile
+    environment:
+      ASPNETCORE_URLS: http://+:5000
+      ASPNETCORE_ENVIRONMENT: Development
+      DOTNET_USE_POLLING_FILE_WATCHER: 1
+    ports:
+      - "5000:5000"
