@@ -10,6 +10,8 @@ namespace ToDoList.Models
         [Display(Name = "Name")]
         public string? Name { get; set; }
 
+        public string? ActivityFile { get; set; }
+
         public IdentityUser? User { get; set; }
 
         public bool IsCompleted { get; set; } = false;

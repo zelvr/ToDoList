@@ -4,9 +4,14 @@ services:
     build:
       context: .
       dockerfile: ToDoList/Dockerfile
+    volumes:
+      - ~/docker-secrets/tg_bot_token:/run/secrets/tg_bot_token:ro
+      - ~/docker-secrets/tg_chat_id:/run/secrets/tg_chat_id:ro
     environment:
-      ASPNETCORE_URLS: http://+:5000
-      ASPNETCORE_ENVIRONMENT: Development
-      DOTNET_USE_POLLING_FILE_WATCHER: 1
+      - TelegramSettings__BotToken_FILE=/run/secrets/tg_bot_token
+      - TelegramSettings__ChatId_FILE=/run/secrets/tg_chat_id
+    restart: unless-stopped
+  redis:
+    image: redis
     ports:
-      - "5000:5000"
+    - "6379:6379"

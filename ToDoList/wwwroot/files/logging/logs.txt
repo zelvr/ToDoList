@@ -1,0 +1,61 @@
+﻿Using an in-memory repository. Keys will not be persisted to storage.
+Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+No XML encryptor configured. Key {6180bc4b-5a9a-4e1e-95a8-734dfe2941fd} may be persisted to storage in unencrypted form.
+Now listening on: http://[::]:8080
+Now listening on: https://[::]:8081
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /app
+Executed DbCommand (19ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Activities" AS "a"
+LEFT JOIN "AspNetUsers" AS "a0" ON "a"."UserId" = "a0"."Id"
+WHERE "a0"."Id" IS NULL AND "a"."IsCompleted"
+Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+Executed DbCommand (5ms) [Parameters=[@entity_equality_user_Id='?' (Size = 36)], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Activities" AS "a"
+LEFT JOIN "AspNetUsers" AS "a0" ON "a"."UserId" = "a0"."Id"
+WHERE "a0"."Id" = @entity_equality_user_Id AND "a"."IsCompleted"
+Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Activities" AS "a"
+LEFT JOIN "AspNetUsers" AS "a0" ON "a"."UserId" = "a0"."Id"
+WHERE "a0"."Id" IS NULL AND NOT ("a"."IsCompleted")
+Executed DbCommand (1ms) [Parameters=[@p2='?' (DbType = Int32), @p='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "a"."Id", "a"."ActivityFile", "a"."IsCompleted", "a"."Name", "a"."UserId"
+FROM "Activities" AS "a"
+LEFT JOIN "AspNetUsers" AS "a0" ON "a"."UserId" = "a0"."Id"
+WHERE "a0"."Id" IS NULL AND NOT ("a"."IsCompleted")
+ORDER BY "a"."Name"
+LIMIT @p2 OFFSET @p
+An exception was thrown while deserializing the token.
+Executed DbCommand (0ms) [Parameters=[@p='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "a"."Id", "a"."ActivityFile", "a"."IsCompleted", "a"."Name", "a"."UserId"
+FROM "Activities" AS "a"
+WHERE "a"."Id" = @p
+LIMIT 1
+Executed DbCommand (0ms) [Parameters=[@_Activity_Id='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "a"."ActivityFile"
+FROM "Activities" AS "a"
+WHERE "a"."Id" = @_Activity_Id
+LIMIT 1
+Executed DbCommand (1ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (Size = 26), @p1='?' (DbType = Boolean), @p2='?' (Size = 7)], CommandType='Text', CommandTimeout='30']
+UPDATE "Activities" SET "ActivityFile" = @p0, "IsCompleted" = @p1, "Name" = @p2
+WHERE "Id" = @p3
+RETURNING 1;
+User  updated activity fgjfgjf at 02/17/2026 13:45:21
+Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "Activities" AS "a"
+LEFT JOIN "AspNetUsers" AS "a0" ON "a"."UserId" = "a0"."Id"
+WHERE "a0"."Id" IS NULL AND NOT ("a"."IsCompleted")
+Executed DbCommand (0ms) [Parameters=[@p2='?' (DbType = Int32), @p='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT "a"."Id", "a"."ActivityFile", "a"."IsCompleted", "a"."Name", "a"."UserId"
+FROM "Activities" AS "a"
+LEFT JOIN "AspNetUsers" AS "a0" ON "a"."UserId" = "a0"."Id"
+WHERE "a0"."Id" IS NULL AND NOT ("a"."IsCompleted")
+ORDER BY "a"."Name"
+LIMIT @p2 OFFSET @p
